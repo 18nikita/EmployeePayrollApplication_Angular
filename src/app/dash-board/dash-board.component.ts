@@ -16,20 +16,25 @@ export class DashBoardComponent implements OnInit {
 
  constructor(private employee: EmployeeService ){}
  ngOnInit(){
+   //get
    this.employee.getUser().subscribe( data => { 
      this.user=data;
-     this.empDetailList=this.user.employeePayrollDataList;
+     this.empDetailList=this.user.data;
        console.log(this.empDetailList);
 
         });
-
   }
-
     get f(){
     return this.registerForm.controls;
   }
 
+    //delete
+  delete(id:number){
+    this.empDetailList.slice(id);
+    this.employee.deleteEmp(id).subscribe((result => {
+        console.log(result)
+    }))
+    alert("Your data is Deleted succesfully");
 
-
-
+  }
 }

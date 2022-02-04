@@ -112,6 +112,7 @@ th {
     text-transform: uppercase;
     opacity: 1;
     border: 0px solid #dddddd;
+ 
 }
 
 tr:not(:first-child) {

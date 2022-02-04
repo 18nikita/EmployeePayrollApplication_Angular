@@ -8,6 +8,7 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 
 import {AppRoutingModule} from './app-routing.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './demoform/form/form.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     DashBoardComponent,
     AddEmployeeComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

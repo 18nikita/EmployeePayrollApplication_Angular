@@ -1,4 +1,4 @@
-export interface PostService {
+export interface employee {
     
     employeeId:number;
     name: String ;

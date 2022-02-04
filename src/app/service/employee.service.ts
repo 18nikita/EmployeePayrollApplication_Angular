@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PostService } from './post-service';
+import { employee } from './employee';
 import { AddEmployeeComponent } from '../add-employee/add-employee/add-employee.component';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,15 +10,26 @@ import { AddEmployeeComponent } from '../add-employee/add-employee/add-employee.
 })
 export class EmployeeService {
   constructor(  private httpClient: HttpClient ) { }
-postData:PostService[]=[]
+  //get call
+  
   getUser(){
-    return this.httpClient.get(`http://localhost:8080/employeePayrollservice/get`);
+    return this.httpClient.get(environment.api_url+'/get');
   }
 
-      url="http://localhost:8080/employeePayrollservice/create";
-
-      createEmp(addNewEmp: any){
-        return this.httpClient.post(this.url, JSON.stringify(addNewEmp) )
-      }
+  //Post 
+      url=environment.api_url+'/create';
+  createContact(reourceBody: { name: string; gender: string; department: string[]; salary: string; startDate: string; note: string; profilePic: string; }){
+    return this.httpClient.post(this.url,reourceBody)
+  }
+      //Delete 
+  deleteEmp(id1: number){
+    const deleteEndpoint=environment.api_url+'/delete/'+id1;
+    return this.httpClient.delete(deleteEndpoint);
+  }
       
+  //Update
+  // editContact(data:any,id:number){
+  //   const editEndpoint='api_url/update'+id;
+  //   this.httpClient.put(this.editEndpoint+id.data);
+  // }
 }
